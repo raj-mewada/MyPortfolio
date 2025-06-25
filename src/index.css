@@ -1,0 +1,139 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Visual Studio 2022 Theme Design System */
+
+@layer base {
+  :root {
+    /* VS 2022 Dark Theme Colors */
+    --vs-bg-primary: 216 24% 12%;           /* #1e1e2e - Main background */
+    --vs-bg-secondary: 217 19% 15%;        /* #252537 - Secondary panels */
+    --vs-bg-tertiary: 220 16% 18%;         /* #2d2d3a - Elevated surfaces */
+    --vs-sidebar: 218 23% 10%;             /* #191927 - Sidebar background */
+    
+    /* Syntax Highlighting Colors */
+    --vs-blue: 207 100% 68%;               /* #569cd6 - Keywords */
+    --vs-purple: 267 84% 71%;              /* #c586c0 - Types */
+    --vs-green: 100 38% 62%;               /* #6a9955 - Strings/Comments */
+    --vs-orange: 28 100% 67%;              /* #ce9178 - Numbers */
+    --vs-yellow: 54 100% 68%;              /* #dcdcaa - Functions */
+    --vs-cyan: 187 47% 55%;                /* #4ec9b0 - Classes */
+    
+    /* UI Colors */
+    --vs-text-primary: 0 0% 92%;           /* #ebebeb - Primary text */
+    --vs-text-secondary: 0 0% 75%;         /* #bfbfbf - Secondary text */
+    --vs-text-muted: 0 0% 55%;             /* #8c8c8c - Muted text */
+    --vs-border: 220 16% 22%;              /* #383850 - Borders */
+    --vs-accent: 214 100% 60%;             /* #0078d4 - VS Blue accent */
+    
+    /* Shadcn overrides for VS theme */
+    --background: var(--vs-bg-primary);
+    --foreground: var(--vs-text-primary);
+    --card: var(--vs-bg-secondary);
+    --card-foreground: var(--vs-text-primary);
+    --popover: var(--vs-bg-tertiary);
+    --popover-foreground: var(--vs-text-primary);
+    --primary: var(--vs-accent);
+    --primary-foreground: var(--vs-text-primary);
+    --secondary: var(--vs-bg-tertiary);
+    --secondary-foreground: var(--vs-text-primary);
+    --muted: var(--vs-bg-secondary);
+    --muted-foreground: var(--vs-text-muted);
+    --accent: var(--vs-bg-tertiary);
+    --accent-foreground: var(--vs-text-primary);
+    --border: var(--vs-border);
+    --input: var(--vs-bg-tertiary);
+    --ring: var(--vs-accent);
+    --radius: 0.25rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', monospace;
+  }
+  
+  /* Custom scrollbar to match VS theme */
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--vs-bg-primary));
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--vs-border));
+    border-radius: 6px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--vs-text-muted));
+  }
+}
+
+/* VS Code-style animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px hsl(var(--vs-accent) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px hsl(var(--vs-accent) / 0.6);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Syntax highlighting utility classes */
+.syntax-keyword {
+  color: hsl(var(--vs-blue));
+}
+
+.syntax-type {
+  color: hsl(var(--vs-purple));
+}
+
+.syntax-string {
+  color: hsl(var(--vs-green));
+}
+
+.syntax-number {
+  color: hsl(var(--vs-orange));
+}
+
+.syntax-function {
+  color: hsl(var(--vs-yellow));
+}
+
+.syntax-class {
+  color: hsl(var(--vs-cyan));
+}
+
+.syntax-comment {
+  color: hsl(var(--vs-text-muted));
+  font-style: italic;
+}
